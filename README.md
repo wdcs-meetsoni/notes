@@ -62,4 +62,11 @@
 - sqs
 - ses
 - elastic cache
-- MSK ( managed streeming for kafka ) kafka cluster 
+- MSK ( managed streeming for kafka ) kafka cluster
+- what is vpc endpoint indepth
+- how to increase site to site vpn speed
+- nat gateway indepth
+- network loadbalancer in-depth ( network loadbalancer controller )
+- karpenter indepth
+
+- how to make changes name of instance in terraform file without recreating instance 
