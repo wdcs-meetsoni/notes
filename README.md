@@ -68,7 +68,8 @@
   - bitnami kafka cluster helm chart with auto create topics 
   - without authantication configuration 
 
-
+- Lambda
+  - 
 - architechture diagram 
 - cost estimation 
 
