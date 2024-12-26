@@ -1,74 +1,111 @@
 ## Tools
-- ec2
+
+- EC2 Instance
   - t4g series ( graviton )
   - m7g metal
-- eip 
-- sg 
+  - eip 
+
+- Autoscaling Group
+
+- Security Group
   - allow from security group 
-- network loadbalancer
+
+- LoadBalancers
+  - network loadbalancer
   - target group 
   - listeners
-- s3 bucket
-- cloud front 
-- vpc
-- ecr
-- eks 
-  - attach efs and create storage class 
+
+- S3 Bucket
+- Cloudfront
+  - 
+
+- VPC
+
+- ECR ( Elastic Container Registry )
+
+- EKS ( Elastic Kubernetes Service )
+  - Attach efs and create storage class 
   - ebs storage class
   - use s3 in pod 
-- kubernetes 
+
+- Kubernetes 
+
   - rollout restart 
   - init container
   - readiness/liveness tcp socket
   - security context for root user 
   - install nfs provistioner storage class for nfs server 
-- istio 
-  - sidecar mode
-  - ambiant mode
-  - mtls
-  - istio gateway 
-  - k8s gateway 
-  - virtual service
-  - destination rule 
-- api gateway 
-- architechture diagram 
-- cost estimation 
+  - affinity
+  - 
+
+  - Kubernetes Api Gateway 
+  - Istio 
+    - Istio Gateway
+    - sidecar mode
+    - ambiant mode
+    - mtls
+    - istio gateway 
+    - k8s gateway 
+    - virtual service
+    - destination rule 
+
 - mongo db 
+
 - mysql 
+- aws rds ( mysql aurora )
+  - update certificate 
+
+- elastic cache
 - redis 
   - create cluster using cli 
+
 - adminer
   - connect all kind of db 
   - take db backup 
+
+- MSK ( managed streeming for kafka ) kafka cluster
 - kafka cluster 
   - bitnami kafka cluster helm chart with auto create topics 
   - without authantication configuration 
+
+
+- architechture diagram 
+- cost estimation 
+
 - prometheus - grafana - loki
   - grafana agents 
   - promtail agents for logs 
+
 - github 
+
 - ha proxy 
+
 - ami
+
 - ebs
+
 - jenkins
+
 - cronjobs 
+
 - python scripts for daily cost 
-- aws rds ( mysql aurora )
-  - update certificate 
+
 - route 53
   - a record
   - alias record to lb 
+
 - efs
+
 - sqs
+
 - ses
-- elastic cache
-- MSK ( managed streeming for kafka ) kafka cluster
+
+
 - what is vpc endpoint indepth
 - how to increase site to site vpn speed
 - nat gateway indepth
 - network loadbalancer in-depth ( network loadbalancer controller )
 - karpenter indepth
-
 - how to make changes name of instance in terraform file without recreating instance
 
 # Questions
