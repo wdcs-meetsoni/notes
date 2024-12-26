@@ -17,7 +17,7 @@
 
 - S3 Bucket
 - Cloudfront
-  - 
+  
 
 - VPC
 
@@ -35,10 +35,10 @@
   - readiness/liveness tcp socket
   - security context for root user 
   - install nfs provistioner storage class for nfs server 
-  - affinity
-  - 
+  - Affinity 
 
   - Kubernetes Api Gateway 
+
   - Istio 
     - Istio Gateway
     - sidecar mode
@@ -64,13 +64,12 @@
   - take db backup 
 
 - MSK ( managed streeming for kafka ) kafka cluster
-- kafka cluster 
   - bitnami kafka cluster helm chart with auto create topics 
   - without authantication configuration 
 
 - Lambda
-  - 
-- architechture diagram 
+
+- Architechture Diagram 
 - cost estimation 
 
 - prometheus - grafana - loki
