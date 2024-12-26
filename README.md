@@ -78,27 +78,31 @@
 
 - github 
 
-- ha proxy 
+- HA-Proxy 
 
-- ami
+- AMI
 
-- ebs
+- EBS
 
-- jenkins
+- Jenkins
+  -  
 
-- cronjobs 
+- Cronjobs 
 
-- python scripts for daily cost 
+- Python scripts for daily cost 
 
-- route 53
-  - a record
+- Route 53
+  - Types of Records
   - alias record to lb 
+  - 
 
-- efs
+- EFS
 
-- sqs
+- SQS
 
-- ses
+- SES
+
+- SNS
 
 
 - what is vpc endpoint indepth
