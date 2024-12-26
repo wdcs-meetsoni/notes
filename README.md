@@ -3,14 +3,15 @@
 - EC2 Instance
   - t4g series ( graviton )
   - m7g metal
-  - eip 
+  - EIP
+  - Security Group
+    - allow from security group 
 
 - Autoscaling Group
 
-- Security Group
-  - allow from security group 
-
 - LoadBalancers
+  - default eks loadbalancer
+  - loadbalancer controller 
   - network loadbalancer
   - target group 
   - listeners
@@ -18,14 +19,16 @@
 - S3 Bucket
 - Cloudfront
   
-
 - VPC
+  - peering 
+
 
 - ECR ( Elastic Container Registry )
 
 - EKS ( Elastic Kubernetes Service )
   - Attach efs and create storage class 
   - ebs storage class
+  - efs storage class 
   - use s3 in pod 
 
 - Kubernetes 
@@ -65,6 +68,9 @@
   - take db backup 
 
 - MSK ( managed streeming for kafka ) kafka cluster
+  - cluster configuration
+  - brokers configuration
+  - kafka ui 
   - bitnami kafka cluster helm chart with auto create topics 
   - without authantication configuration 
 
