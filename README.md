@@ -51,15 +51,16 @@
 
 - mongo db 
 
-- mysql 
-- aws rds ( mysql aurora )
+- aws Aurora RDS ( MYSQL )
   - update certificate 
+  - instance type 
+  - backup plan 
 
-- elastic cache
-- redis 
-  - create cluster using cli 
+- ElastiCache ( Redis OSS )
+  - create cluster using cli
+  - cluster mode 
 
-- adminer
+- Adminer
   - connect all kind of db 
   - take db backup 
 
@@ -70,7 +71,8 @@
 - Lambda
 
 - Architechture Diagram 
-- cost estimation 
+
+- Cost estimation 
 
 - prometheus - grafana - loki
   - grafana agents 
@@ -85,7 +87,6 @@
 - EBS
 
 - Jenkins
-  -  
 
 - Cronjobs 
 
