@@ -149,3 +149,7 @@
 - Load Balancer vs. Reverse Proxy: A load balancer distributes traffic across multiple servers, while a reverse proxy forwards requests to a specific server behind it.
 - Implementing SSL offloading on AWS Load Balancer: Configure SSL certificates on the load balancer to handle SSL termination, reducing SSL workload on backend instances.
 - Role of sticky sessions in multi-instance architecture: Use sticky sessions to maintain session state when needed; avoid if instances need stateless or distributed sessions.
+
+## Must Read
+
+- [DevOps Enhancement Plan](https://blog.stackademic.com/i-stopped-using-kubernetes-our-devops-team-is-happier-than-ever-a5519f916ec0)
