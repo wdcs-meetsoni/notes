@@ -1,0 +1,5 @@
+liveness and readyness prob configuration 
+- tcp socket 
+- kubernetes api gateway 
+- istio with virtual service 
+- efs role 

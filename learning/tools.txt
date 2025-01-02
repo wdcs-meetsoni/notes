@@ -1,0 +1,65 @@
+Tools
+- ec2
+  - t4g series ( graviton )
+  - m7g metal
+- eip 
+- sg 
+  - allow from security group 
+- network loadbalancer
+  - target group 
+  - listeners
+- s3 bucket
+- cloud front 
+- vpc
+- ecr
+- eks 
+  - attach efs and create storage class 
+  - ebs storage class
+  - use s3 in pod 
+- kubernetes 
+  - rollout restart 
+  - init container
+  - readiness/liveness tcp socket
+  - security context for root user 
+  - install nfs provistioner storage class for nfs server 
+- istio 
+  - sidecar mode
+  - ambiant mode
+  - mtls
+  - istio gateway 
+  - k8s gateway 
+  - virtual service
+  - destination rule 
+- api gateway 
+- architechture diagram 
+- cost estimation 
+- mongo db 
+- mysql 
+- redis 
+  - create cluster using cli 
+- adminer
+  - connect all kind of db 
+  - take db backup 
+- kafka cluster 
+  - bitnami kafka cluster helm chart with auto create topics 
+  - without authantication configuration 
+- prometheus - grafana - loki
+  - grafana agents 
+  - promtail agents for logs 
+- github 
+- ha proxy 
+- ami
+- ebs
+- jenkins
+- cronjobs 
+- python scripts for daily cost 
+- aws rds ( mysql aurora )
+  - update certificate 
+- route 53
+  - a record
+  - alias record to lb 
+- efs
+- sqs
+- ses
+- elastic cache
+- MSK ( managed streeming for kafka ) kafka cluster 

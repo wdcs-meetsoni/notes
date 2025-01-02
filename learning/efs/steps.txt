@@ -1,0 +1,16 @@
+create efs file system
+- open console 
+- click create efs
+- provide name 
+- select vpc ( it will automatically create mount targets in respective subnetes )
+
+Go to eks 
+- click add ons 
+- add Amazon EFS CSI Driver
+
+Create IAM role
+https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html#efs-create-iam-resources
+
+
+
+https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html

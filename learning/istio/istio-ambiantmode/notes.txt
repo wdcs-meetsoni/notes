@@ -1,0 +1,10 @@
+helm install istio-base istio/base -n istio-system --create-namespace --wait
+helm install istio-cni istio/cni -n istio-system --set profile=ambient --wait
+helm install istiod istio/istiod --namespace istio-system --set profile=ambient --wait
+helm install ztunnel istio/ztunnel -n istio-system --wait
+helm install istio-ingress istio/gateway -n istio-ingress --create-namespace --wait
+
+-- sample application --
+
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.22/samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.22/samples/bookinfo/platform/kube/bookinfo-versions.yaml

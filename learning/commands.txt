@@ -1,0 +1,5 @@
+
+find . -type f -name 'defrenz-staging*' -exec rename 's/defrenz-staging/defrenz-prod/' {} \;
+find . -type f -exec sed -i 's/defrenz-staging/defrenz-prod/g' {} \;
+find . -type f -exec sed -i 's/namespace: staging/namespace: prod/g' {} \;
+ 

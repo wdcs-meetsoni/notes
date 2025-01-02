@@ -1,0 +1,48 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+]
+
+pipeline {
+    agent any
+    environment {
+        FUNCTION_NAME = 'defrenz-staging-image-compression-community'
+        AWS_REGION = 'ap-south-1'
+    }
+    stages {
+        stage("Prepare Zip for Lambda") {
+            steps {
+                script {
+                    def date = sh(script: "date +%Y%m%d", returnStdout: true).trim()
+                    sh "mkdir -p package"
+                    sh """
+                        cp handler.py package/
+                        cd package
+                        zip -r9 ../lambda-package-${date}.zip .
+                        cd ..
+                    """
+                }
+            }
+        }
+        stage("Deploy to Lambda") {
+            steps {
+                script {
+                    def date = sh(script: "date +%Y%m%d", returnStdout: true).trim()
+                    def result = sh(script: "aws lambda update-function-code --function-name ${FUNCTION_NAME} --zip-file fileb://lambda-package-${date}.zip --region ${AWS_REGION}", returnStatus: true)
+                    if (result != 0) {
+                        error("Failed to deploy to Lambda")
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            slackSend(
+                channel: '#team-defrenz-logs', 
+                message: "Build: *${currentBuild.result}:* JOB ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}",
+                color: COLOR_MAP[currentBuild.result]
+            )
+        }
+    }
+}

@@ -1,0 +1,87 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+]
+
+def url = 'https://staging-api.defrenz.com/'
+
+pipeline {
+    agent any
+
+    environment {
+        // Initialize the repository name, branch name, and ECR registry URL
+        REPO_NAME = '' 
+        BRANCH_NAME = 'stg' // This will be set automatically by Jenkins
+        ECR_URL = '650251700684.dkr.ecr.ap-south-1.amazonaws.com'
+    }
+
+    stages {
+        stage('Set Repository Name') {
+            steps {
+                script {
+                    // Extract the repository name from GIT_URL
+                    def gitUrl = env.GIT_URL // This should automatically be set by Jenkins
+                    def matcher = (gitUrl =~ /\/([^\/]+)\.git$/)
+                    
+                    if (matcher) {
+                        env.REPO_NAME = matcher[0][1] // Set the environment variable to the repository name
+                    } else {
+                        error("Could not determine repository name from GIT_URL")
+                    }
+
+                    // Set the branch name from the Jenkins environment
+                    env.BRANCH_NAME = env.BRANCH_NAME ?: 'dev' // Default to 'main' if not set
+                    echo "Repository Name: ${env.REPO_NAME}"
+                    echo "Branch Name: ${env.BRANCH_NAME}"
+                }
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                checkout scm // Checkout the code from the SCM configured in Jenkins
+            }
+        }
+
+        stage("Create Docker Image") {
+            steps {
+                // Use the REPO_NAME and BRANCH_NAME variables to avoid hardcoding
+                sh "curl -o .env file:///var/lib/jenkins/env/${env.BRANCH_NAME}/${env.REPO_NAME}/.env"
+                sh "docker build -t ${env.ECR_URL}/${env.REPO_NAME}-${env.BRANCH_NAME}:$BUILD_NUMBER ."
+                echo 'Build Image Completed'
+            }
+        }
+
+        stage("Login in Docker Registry") {
+            steps {
+                sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${env.ECR_URL}"
+                echo 'Login Completed'
+            }
+        }
+
+        stage('Push Image to Docker Hub') {
+            steps {
+                // Use the REPO_NAME and BRANCH_NAME variables to avoid hardcoding
+                sh "docker push ${env.ECR_URL}/${env.REPO_NAME}-${env.BRANCH_NAME}:$BUILD_NUMBER"
+                echo 'Push Image Completed'
+            }
+        }
+
+        stage('Integrate Jenkins with EKS Cluster and Deploy App') {
+            steps {
+                // Use the REPO_NAME and BRANCH_NAME variables to avoid hardcoding
+                sh "kubectl set image deployment/${env.REPO_NAME}-${env.BRANCH_NAME}-deploy -n ${env.BRANCH_NAME} ${env.REPO_NAME}-${env.BRANCH_NAME}-container=${env.ECR_URL}/${env.REPO_NAME}-${env.BRANCH_NAME}:$BUILD_NUMBER"
+            }
+        }
+    }
+
+    post {
+        always {
+            slackSend(
+                channel: '#team-defrenz-logs', 
+                message: "Build: *${currentBuild.result}:* JOB ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL} \n Web-Site URL: ${url}",
+                color: COLOR_MAP[currentBuild.result]
+            )
+        }
+    }
+}

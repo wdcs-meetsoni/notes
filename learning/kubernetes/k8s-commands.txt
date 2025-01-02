@@ -1,0 +1,5 @@
+source <(kubectl completion bash)
+
+
+kubectl get secret secret-name -n source-namespace -o yaml | sed "s/namespace: source-namespace/namespace: target-namespace/" | kubectl apply -n target-namespace -f -
+

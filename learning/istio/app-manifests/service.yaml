@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-app
+  namespace: web
+spec:
+  selector:
+    app: first-app
+  type: ClusterIP
+  ports:
+  - name: first-app
+    port: 8080
+    targetPort: 8080

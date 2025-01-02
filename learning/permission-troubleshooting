@@ -1,0 +1,14 @@
+# First, remove all ACLs
+sudo setfacl -R -b /var/lib/jenkins/env/
+
+# Set permissions for directories to 755
+sudo find /var/lib/jenkins/env/ -type d -exec chmod 755 {} \;
+
+# Set permissions for files to 644
+sudo find /var/lib/jenkins/env/ -type f -exec chmod 644 {} \;
+
+# Set ownership
+sudo chown -R root:root /var/lib/jenkins/env/
+
+# Verify permissions
+ls -lR /var/lib/jenkins/env/

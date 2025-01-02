@@ -52,9 +52,9 @@
     - virtual service
     - destination rule 
 
-- mongo db 
+- Mongo Atlas ( Mongo DB )
 
-- aws Aurora RDS ( MYSQL )
+- Aurora RDS ( MYSQL )
   - update certificate 
   - instance type 
   - backup plan 
@@ -80,13 +80,13 @@
 
 - Cost estimation 
 
-- prometheus - grafana - loki
+- Prometheus - Grafana - Loki
   - grafana agents 
   - promtail agents for logs 
 
-- github 
+- GitHub 
 
-- HA-Proxy 
+- HAProxy 
 
 - AMI
 

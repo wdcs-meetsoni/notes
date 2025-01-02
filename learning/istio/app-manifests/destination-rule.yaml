@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: first-app
+  namespace: web
+spec:
+  host: first-app.web.svc.cluster.local
+  subsets:
+  - name: v1
+    labels:
+      app: first-app
+      version: v1
+  - name: v2
+    labels:
+      app: first-app
+      version: v2
+      

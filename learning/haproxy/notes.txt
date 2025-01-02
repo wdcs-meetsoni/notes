@@ -1,0 +1,19 @@
+1. install haproxy ingress helm chart with nodeport type 
+2. deploy app with service and ingress rule  
+3. run this command to check ip of minikube
+   # minikube service hap-kubernetes-ingress  -n hap
+   - you will get 1 ip
+4 do dns entry of minikube ip with your domain name
+5. access your app with your domain name
+6. create self signed certificate and secrate using below commands 
+   # openssl genpkey -algorithm RSA -out key.pem
+   # openssl req -new -x509 -key key.pem -out cert.pem -days
+   # kubectl create secret tls my-tls-secret --cert=cert.pem --key=key.pem -n web
+
+https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_tls/
+https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
+https://www.haproxy.com/documentation/kubernetes-ingress/community/installation/on-prem/
+---
+
+http://helloworldmeet.example:<nodeport>
+
