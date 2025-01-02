@@ -8,6 +8,8 @@ print(var[::-1])
 print(var[2:])
 print(var[1::2])
 
+print(var.strip())
+
 s1 = "m" + var[1:]
 print(s1)
 
