@@ -21,3 +21,6 @@ print(var)
 
 print(len(var))
 print(var.upper())
+
+print(var[0].lower() + var[5::])
+print("m" + var[5::])
