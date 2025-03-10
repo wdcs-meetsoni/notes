@@ -47,7 +47,6 @@
     - sidecar mode
     - ambiant mode
     - mtls
-    - istio gateway 
     - k8s gateway 
     - virtual service
     - destination rule 
